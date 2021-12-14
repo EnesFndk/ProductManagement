@@ -1,0 +1,180 @@
+﻿//// GET: api/Brands
+        //[HttpGet]
+        //public async Task<ActionResult<IEnumerable<Brand>>> GetBrands()
+        //{
+        //    return await _context.Brands.ToListAsync();
+        //}
+
+        //// GET: api/Brands/5
+        //[HttpGet("{id}")]
+        //public async Task<ActionResult<Brand>> GetBrand(int id)
+        //{
+        //    var brand = await _context.Brands.FindAsync(id);
+
+        //    if (brand == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    return brand;
+        //}
+
+        //// PUT: api/Brands/5
+        //// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        //[HttpPut("{id}")]
+        //public async Task<IActionResult> PutBrand(int id, Brand brand)
+        //{
+        //    if (id != brand.Id)
+        //    {
+        //        return BadRequest();
+        //    }
+
+        //    _context.Entry(brand).State = EntityState.Modified;
+
+        //    try
+        //    {
+        //        await _context.SaveChangesAsync();
+        //    }
+        //    catch (DbUpdateConcurrencyException)
+        //    {
+        //        if (!BrandExists(id))
+        //        {
+        //            return NotFound();
+        //        }
+        //        else
+        //        {
+        //            throw;
+        //        }
+        //    }
+
+        //    return NoContent();
+        //}
+
+        //// POST: api/Brands
+        //// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        //[HttpPost]
+        //public async Task<ActionResult<Brand>> PostBrand(Brand brand)
+        //{
+        //    _context.Brands.Add(brand);
+        //    await _context.SaveChangesAsync();
+
+        //    return CreatedAtAction("GetBrand", new { id = brand.Id }, brand);
+        //}
+
+        //// DELETE: api/Brands/5
+        //[HttpDelete("{id}")]
+        //public async Task<IActionResult> DeleteBrand(int id)
+        //{
+        //    var brand = await _context.Brands.FindAsync(id);
+        //    if (brand == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    _context.Brands.Remove(brand);
+        //    await _context.SaveChangesAsync();
+
+        //    return NoContent();
+        //}
+
+        //private bool BrandExists(int id)
+        //{
+        //    return _context.Brands.Any(e => e.Id == id);
+        //}
+
+
+        -------------VIEWS-----------------
+
+        @model IEnumerable<Entity.Concrete.City>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<div>
+    <h4>City</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CountryId)
+        </dt>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>
+
+
+
+
+
+
+
+@*<link rel="stylesheet" href="~/css/style.css" />
+<link rel="stylesheet" href="~/lib/" />
+
+<h1>Ürünler</h1>
+
+<main>
+    <table>
+        <thead>
+            <tr>
+                <th>Ürün İsmi</th>
+                <th>Ürün Id'si</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td data-title="Ürün ismi">@item.Name</td>
+                    <td data-title="Ürün Id" sil'>@item.Id</td>
+                    <td class='select'>
+                        <a data-id="@item.Id" class='button' href='#'>Select</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+   @* <div class='detail'>
+        <div class='detail-container'>
+            <dl>
+                <dt>Ürün ismi</dt>
+                <dd>@item.Name</dd>
+                <dt>Ürün id'si</dt>
+                <dd>@item.Id</dd>
+                <dt>Product</dt>
+                <dd>@item.Products</dd>
+            </dl>
+        </div>
+        <div class='detail-nav'>
+            <button class='close'>
+                Kapat
+            </button>
+        </div>
+    </div>
+</main>
+
+
+@section Scripts {
+<script type="text/javascript">
+    $('.button, .close').on('click', function(e) {
+        
+        e.preventDefault();
+    $('.detail, html, body').toggleClass('open');
+
+    });
+</script>
+}
+*@
