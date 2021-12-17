@@ -17,10 +17,12 @@ namespace ProjectX.Controllers
     public class BrandsController : ControllerBase
     {
         private readonly IBrandService _brandService;
+        private readonly XDbContext _context;
 
-        public BrandsController(IBrandService brandService)
+        public BrandsController(IBrandService brandService, XDbContext context)
         {
             _brandService = brandService;
+            _context = context;
         }
 
         [HttpGet("getall")]
@@ -47,7 +49,7 @@ namespace ProjectX.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult Add(Brand brand)
+        public IActionResult Add([FromBody] Brand brand)
         {
             _brandService.Add(brand);
             return Ok();
@@ -71,10 +73,13 @@ namespace ProjectX.Controllers
             }
             else
             {
-                return NotFound("Marka Silinemedi");
+                return NotFound("Marka Bulunamadı");
             }
+                
+
         }
 
         
+
     }
 }

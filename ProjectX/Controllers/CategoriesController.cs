@@ -40,7 +40,7 @@ namespace ProjectX.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult Add(Category category)
+        public IActionResult Add([FromBody] Category category)
         {
             _categoryService.Add(category);
             return Ok();

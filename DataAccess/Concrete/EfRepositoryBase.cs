@@ -22,13 +22,13 @@ namespace DataAccess.Concrete
 
         public void Add(T entity)
         {
-            _context.Add(entity);
+            _context.Set<T>().Add(entity);
             _context.SaveChanges();
         }
 
         public void Delete(T entity)
         {
-            _context.Remove(entity);
+            _context.Set<T>().Remove(entity);
             _context.SaveChanges();
             //var deletedEntity = _context.Entry(entity);
             //deletedEntity.State = EntityState.Deleted;
@@ -37,7 +37,8 @@ namespace DataAccess.Concrete
 
         public void DeleteSelected(List<T> entities)
         {
-            throw new NotImplementedException();
+            _context.Set<T>().RemoveRange(entities);
+            _context.SaveChanges();
         }
 
         public T Get(Expression<Func<T, bool>> filter)

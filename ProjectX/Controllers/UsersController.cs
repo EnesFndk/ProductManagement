@@ -52,7 +52,7 @@ namespace ProjectX.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult Add(User user)
+        public IActionResult Add([FromBody] User user)
         {
             _userService.Add(user);
             return Ok();

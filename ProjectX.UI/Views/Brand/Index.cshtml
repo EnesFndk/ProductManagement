@@ -3,32 +3,41 @@
 @{
     ViewData["Title"] = "Home Page";
 }
+
 <title>Brands</title>
 
-
 <div class="card-body" style="margin: 10px;">
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1>Brands</h1>
-                </div>
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="../home/index">Home</a></li>
-                        <li class="breadcrumb-item active">Brands</li>
-                    </ol>
-                </div>
+<section class="conteblackt-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Brands</h1>
             </div>
-        </div><!-- /.container-fluid -->
-    </section>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+
+                    <li class="breadcrumb-item"><a href="../home/index">Home</a></li>
+                    <li class="breadcrumb-item active">Brands</li>
+                </ol>
+                    
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
 
 
     <table id="example2" class="table table-bordered table-hover">
         <thead>
+            @*<a href="#" class="btn btn-primary btn-xs pull-right"><b>+</b> Add new categories</a>*@
             <tr>
                 <th>Id</th>
                 <th>Name</th>
+                <th>
+                    <button type="button" class="btn btn-outline-success btn-rounded" data-mdb-ripple-color="dark">
+                        <a asp-action="Create"><i class="fa fa-plus"></i>Create new Brand</a>
+                    </button>
+                </th>
             </tr>
         </thead>
         @foreach (var item in Model)
@@ -37,21 +46,28 @@
                 <tr>
                     <td>@item.Id</td>
                     <td>@item.Name</td>
+                    <td>
+                        <button type="button" class="btn btn-outline-info btn-rounded" data-mdb-ripple-color="dark">
+                            <a asp-action="Edit"><i class="fa fa-edit"></i></a>
+                        </button>
+                        <button type="button" class="btn btn-outline-danger btn-rounded" data-mdb-ripple-color="dark">
+                            <a asp-action="Delete"><i class="fa fa-trash"></i></a>
+                        </button>
+                    </td>
                 </tr>
             </tbody>
         }
-        <tfoot>
+       @* <tfoot>
             <tr>
                 <th>Id</th>
                 <th>Name</th>
+                <th>
+                    Action
+                </th>
             </tr>
-        </tfoot>
+        </tfoot>*@
     </table>
 
-</div>
-
-<div>
-    <a asp-action="Create">Create</a>
 </div>
 
 

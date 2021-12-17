@@ -14,6 +14,7 @@ namespace ProjectX.UI.Controllers
     public class ControllerAdmin : Controller
     {
         protected readonly HttpClient _httpclient;
+        
 
         public ControllerAdmin()
         {
@@ -24,8 +25,6 @@ namespace ProjectX.UI.Controllers
             _httpclient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
-        //Logger'ı burda yaptığımızda kendini tekrarlıyor o sebeple logger'ı controller'ların içerisinde yapmak gerekli. 
-        //protected readonly ILogger<***Controller> _logger; deyip constructor oluşturduktan sonra onu dependency injection eşitliyoruz. _logger = logger; sonra controller'da kullanabiliriz.
-        //public SupplierController(ILogger<SupplierController> logger) : base(logger)
+        
     }
 }

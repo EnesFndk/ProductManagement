@@ -39,7 +39,7 @@ namespace ProjectX.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult Add(Product product)
+        public IActionResult Add([FromBody] Product product)
         {
             _productService.Add(product);
             return Ok();

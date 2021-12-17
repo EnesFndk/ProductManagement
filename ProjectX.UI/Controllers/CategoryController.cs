@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace ProjectX.UI.Controllers
@@ -28,6 +29,90 @@ namespace ProjectX.UI.Controllers
             var resultContent = await result.Content.ReadAsStringAsync();
 
             return View(categoryList);
+        }
+        [HttpGet]
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(Category category)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var result = await _httpclient.PostAsync("/api/Categories/add", new StringContent(JsonConvert.SerializeObject(new Brand() { Name = category.Name }), Encoding.UTF8, "application/json"));
+                    var resultContent = await result.Content.ReadAsStringAsync();
+
+                    return RedirectToAction("Index");
+
+                }
+                catch (Exception ex)
+                {
+
+                    ModelState.AddModelError(string.Empty, "Yanlış { ex.Message}");
+                }
+            }
+            ModelState.AddModelError(string.Empty, "Yanlış");
+            return View(category);
+        }
+
+        [HttpGet]
+        public ActionResult Edit()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Edit(Category category)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var result = await _httpclient.PutAsync("/api/Categories/put", new StringContent(JsonConvert.SerializeObject(category), Encoding.UTF8, "application/json"));
+                    var resultContent = await result.Content.ReadAsStringAsync();
+
+                    return RedirectToAction("Index");
+
+                }
+                catch (Exception ex)
+                {
+
+                    ModelState.AddModelError(string.Empty, "Yanlış { ex.Message}");
+                }
+            }
+            ModelState.AddModelError(string.Empty, "Yanlış");
+            return View(category);
+        }
+
+        [HttpGet]
+        public ActionResult Delete()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Delete(int id)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var result = await _httpclient.DeleteAsync("/api/Categories/delete/?id=" + id);
+                    result.EnsureSuccessStatusCode();
+
+                    return RedirectToAction("Index");
+
+                }
+                catch (Exception ex)
+                {
+
+                    ModelState.AddModelError(string.Empty, "Yanlış { ex.Message}");
+                }
+            }
+            ModelState.AddModelError(string.Empty, "Yanlış");
+            return View(id);
         }
     }
 }

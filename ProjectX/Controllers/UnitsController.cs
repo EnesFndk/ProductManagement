@@ -39,7 +39,7 @@ namespace ProjectX.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult Add(Unit unit)
+        public IActionResult Add([FromBody] Unit unit)
         {
             _unitService.Add(unit);
             return Ok();

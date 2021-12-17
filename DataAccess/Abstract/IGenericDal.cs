@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Entity.Abstract;
+using Entity.Concrete;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -7,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Abstract
 {
-    public interface IGenericDal<T> where T:class
+    public interface IGenericDal<T> where T: class, IEntity
     {
         void Add(T entity);
         void Delete(T entity);

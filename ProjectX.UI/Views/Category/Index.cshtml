@@ -31,6 +31,11 @@
             <tr>
                 <th>Id</th>
                 <th>Name</th>
+                <th>
+                    <button type="button" class="btn btn-outline-success btn-rounded" data-mdb-ripple-color="dark">
+                        <a asp-action="Create"><i class="fa fa-plus"></i>Create new Category</a>
+                    </button>
+                </th>
             </tr>
         </thead>
         @foreach (var item in Model)
@@ -39,17 +44,17 @@
                 <tr>
                     <td>@item.Id</td>
                     <td>@item.Name</td>
+                    <td>
+                        <button type="button" class="btn btn-outline-info btn-rounded" data-mdb-ripple-color="dark">
+                            <a asp-action="Edit"><i class="fa fa-edit"></i></a>
+                        </button>
+                        <button type="button" class="btn btn-outline-danger btn-rounded" data-mdb-ripple-color="dark">
+                            <a asp-action="Delete"><i class="fa fa-trash"></i></a>
+                        </button>
+                    </td>
                 </tr>
             </tbody>
         }
-        <tfoot>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-            </tr>
-        </tfoot>
     </table>
-
-
 </div>
 

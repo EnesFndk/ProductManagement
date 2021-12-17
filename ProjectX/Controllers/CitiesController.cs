@@ -40,7 +40,7 @@ namespace ProjectX.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult Add(City city)
+        public IActionResult Add([FromBody] City city)
         {
             _cityService.Add(city);
             return Ok();

@@ -35,7 +35,7 @@ namespace ProjectX.Controllers
             return Ok(result);
         }
         [HttpPost("add")]
-        public IActionResult Add(Country country)
+        public IActionResult Add([FromBody] Country country)
         {
             _countryService.Add(country);
             return Ok();
