@@ -4,27 +4,27 @@
     ViewData["Title"] = "Index";
 }
 
-
-
 <title>Countries</title>
 
-
 <div class="card-body" style="margin: 10px;">
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1>Countries</h1>
-                </div>
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="../home/index">Home</a></li>
-                        <li class="breadcrumb-item active">Countries</li>
-                    </ol>
-                </div>
+<section class="conteblackt-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Countries</h1>
             </div>
-        </div><!-- /.container-fluid -->
-    </section>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+
+                    <li class="breadcrumb-item"><a href="../home/index">Home</a></li>
+                    <li class="breadcrumb-item active">Countries</li>
+                </ol>
+                    
+            </div>
+        </div>
+    </div>
+</section>
+
 
 
     <table id="example2" class="table table-bordered table-hover">
@@ -32,6 +32,11 @@
             <tr>
                 <th>Id</th>
                 <th>Name</th>
+                <th>
+                    <button type="button" class="btn btn-outline-success btn-rounded" data-mdb-ripple-color="dark">
+                        <a asp-action="Create"><i class="fa fa-plus"></i>Create new Country</a>
+                    </button>
+                </th>
             </tr>
         </thead>
         @foreach (var item in Model)
@@ -40,37 +45,17 @@
                 <tr>
                     <td>@item.Id</td>
                     <td>@item.Name</td>
+                    <td>
+                        <button type="button" class="btn btn-outline-info btn-rounded" data-mdb-ripple-color="dark">
+                            <a asp-action="Edit"><i class="fa fa-edit"></i></a>
+                        </button>
+                        <button type="button" class="btn btn-outline-danger btn-rounded" data-mdb-ripple-color="dark">
+                            <a asp-action="Delete"><i class="fa fa-trash"></i></a>
+                        </button>
+                    </td>
                 </tr>
             </tbody>
         }
-        <tfoot>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-            </tr>
-        </tfoot>
     </table>
 
-
 </div>
-
-
-
-@*<h1>Index</h1>
-
-<div>
-    <h4>City</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Id)
-        </dt>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-    </dl>
-</div>
-<div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index">Back to List</a>
-</div>*@

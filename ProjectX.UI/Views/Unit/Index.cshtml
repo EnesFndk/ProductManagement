@@ -21,7 +21,7 @@
                     </ol>
                 </div>
             </div>
-        </div><!-- /.container-fluid -->
+        </div>
     </section>
 
 
@@ -30,6 +30,11 @@
             <tr>
                 <th>Id</th>
                 <th>Name</th>
+                <th>
+                    <button type="button" class="btn btn-outline-success btn-rounded" data-mdb-ripple-color="dark">
+                        <a asp-action="Create"><i class="fa fa-plus"></i>Create new Unit</a>
+                    </button>
+                </th>
             </tr>
         </thead>
         @foreach (var item in Model)
@@ -38,53 +43,16 @@
                 <tr>
                     <td>@item.Id</td>
                     <td>@item.Name</td>
+                    <td>
+                        <button type="button" class="btn btn-outline-info btn-rounded" data-mdb-ripple-color="dark">
+                            <a asp-action="Edit"><i class="fa fa-edit"></i></a>
+                        </button>
+                        <button type="button" class="btn btn-outline-danger btn-rounded" data-mdb-ripple-color="dark">
+                            <a asp-action="Delete"><i class="fa fa-trash"></i></a>
+                        </button>
+                    </td>
                 </tr>
             </tbody>
         }
-        <tfoot>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-            </tr>
-        </tfoot>
     </table>
-
-
 </div>
-
-@*<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Yeni Unit Oluştur</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
-*@

@@ -35,9 +35,9 @@ namespace ProjectX.UI.Controllers
             var brandList = JsonConvert.DeserializeObject<List<Brand>>(responseContent);
 
             //post
-            var adress = new HttpClient { BaseAddress = new Uri("http://localhost:14701") };
+            var address = new HttpClient { BaseAddress = new Uri("http://localhost:14701") };
 
-            var result = await _httpclient.PostAsync("/api/Brands/add", new StringContent(JsonConvert.SerializeObject(adress))); 
+            var result = await _httpclient.PostAsync("/api/Brands/add", new StringContent(JsonConvert.SerializeObject(address))); 
 
             return View(brandList);
         }

@@ -4,7 +4,8 @@
     ViewData["Title"] = "Index";
 }
 
-<title>Cities</title>
+
+<title>City</title>
 
 
 <div class="card-body" style="margin: 10px;">
@@ -30,8 +31,12 @@
             <tr>
                 <th>Id</th>
                 <th>Name</th>
-                <th>Country</th>
                 <th>Country Id</th>
+                <th>
+                    <button type="button" class="btn btn-outline-success btn-rounded" data-mdb-ripple-color="dark">
+                        <a asp-action="Create"><i class="fa fa-plus"></i>Create new City</a>
+                    </button>
+                </th>
             </tr>
         </thead>
         @foreach (var item in Model)
@@ -40,49 +45,17 @@
                 <tr>
                     <td>@item.Id</td>
                     <td>@item.Name</td>
-                    <td>@item.Country.Name</td>
-                    <td>@item.CountryId</td>
+                    <th>@item.CountryId</th>
+                    <td>
+                        <button type="button" class="btn btn-outline-info btn-rounded" data-mdb-ripple-color="dark">
+                            <a asp-action="Edit"><i class="fa fa-edit"></i></a>
+                        </button>
+                        <button type="button" class="btn btn-outline-danger btn-rounded" data-mdb-ripple-color="dark">
+                            <a asp-action="Delete"><i class="fa fa-trash"></i></a>
+                        </button>
+                    </td>
                 </tr>
             </tbody>
         }
-        <tfoot>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Country</th>
-                <th>Country Id</th>
-            </tr>
-        </tfoot>
     </table>
-
-
 </div>
-
-
-
-
-
-
-
-@*<h1>Index</h1>
-
-<div>
-    <h4>City</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Id)
-        </dt>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CountryId)
-        </dt>
-    </dl>
-</div>
-<div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index">Back to List</a>
-</div>
-*@

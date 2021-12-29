@@ -12,7 +12,7 @@ namespace ProjectX.UI.Controllers
 {
     public class CategoryController : ControllerAdmin
     {
-        public CategoryController(ILogger<CategoryController> logger): base()
+        public CategoryController(): base()
         {
 
         }
@@ -23,9 +23,9 @@ namespace ProjectX.UI.Controllers
             var responseContent = await response.Content.ReadAsStringAsync();
             var categoryList = JsonConvert.DeserializeObject<List<Category>>(responseContent);
 
-            var adress = new HttpClient { BaseAddress = new Uri("http://localhost:14701") };
+            var address = new HttpClient { BaseAddress = new Uri("http://localhost:14701") };
 
-            var result = await _httpclient.PostAsync("/api/Categories/add", new StringContent(JsonConvert.SerializeObject(adress)));
+            var result = await _httpclient.PostAsync("/api/Categories/add", new StringContent(JsonConvert.SerializeObject(address)));
             var resultContent = await result.Content.ReadAsStringAsync();
 
             return View(categoryList);
@@ -43,7 +43,7 @@ namespace ProjectX.UI.Controllers
             {
                 try
                 {
-                    var result = await _httpclient.PostAsync("/api/Categories/add", new StringContent(JsonConvert.SerializeObject(new Brand() { Name = category.Name }), Encoding.UTF8, "application/json"));
+                    var result = await _httpclient.PostAsync("/api/Categories/add", new StringContent(JsonConvert.SerializeObject(new Category() { Name = category.Name }), Encoding.UTF8, "application/json"));
                     var resultContent = await result.Content.ReadAsStringAsync();
 
                     return RedirectToAction("Index");

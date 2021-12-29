@@ -4,6 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
+
 <title>Suppliers</title>
 
 
@@ -12,7 +13,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Suppliers</h1>
+                    <h1>Products</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -21,7 +22,7 @@
                     </ol>
                 </div>
             </div>
-        </div><!-- /.container-fluid -->
+        </div>
     </section>
 
 
@@ -34,8 +35,12 @@
                 <th>PhoneNumber</th>
                 <th>Email</th>
                 <th>Status</th>
-                <th>City Name</th>
-                <th>City Id</th>
+                <th>CityId</th>
+                <th>
+                    <button type="button" class="btn btn-outline-success btn-rounded" data-mdb-ripple-color="dark">
+                        <a asp-action="Create"><i class="fa fa-plus"></i>Create new Supplier</a>
+                    </button>
+                </th>
             </tr>
         </thead>
         @foreach (var item in Model)
@@ -47,93 +52,87 @@
                     <td>@item.Address</td>
                     <td>@item.PhoneNumber</td>
                     <td>@item.Email</td>
+                    @*<td>@item.City.Name</td>*@
                     <td>@item.Status</td>
-                    <td>@item.City.Name</td>
                     <td>@item.CityId</td>
+                    <td>
+                        <button type="button" class="btn btn-outline-info btn-rounded" data-mdb-ripple-color="dark">
+                            <a asp-route-id="@item.Id" asp-action="Edit"><i class="fa fa-edit"></i></a>
+                        </button>
+                        <button type="button" class="btn btn-outline-danger btn-rounded" data-mdb-ripple-color="dark">
+                            <a asp-route-id="@item.Id" asp-action="Delete"><i class="fa fa-trash"></i></a>
+                        </button>
+                    </td>
                 </tr>
             </tbody>
         }
-        <tfoot>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Address</th>
-                <th>PhoneNumber</th>
-                <th>Email</th>
-                <th>Status</th>
-                <th>City Name</th>
-                <th>City Id</th>
-            </tr>
-        </tfoot>
     </table>
-
-
 </div>
 
 
 
 @*<h1>Index</h1>
 
-<p>
+    <p>
     <a asp-action="Create">Yeni Tedarikçi Oluştur</a>
-</p>
-<table class="table">
+    </p>
+    <table class="table">
     <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Adress)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PhoneNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Status)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CityId)
-            </th>
-            <th></th>
-        </tr>
+    <tr>
+    <th>
+    @Html.DisplayNameFor(model => model.Id)
+    </th>
+    <th>
+    @Html.DisplayNameFor(model => model.Name)
+    </th>
+    <th>
+    @Html.DisplayNameFor(model => model.Adress)
+    </th>
+    <th>
+    @Html.DisplayNameFor(model => model.PhoneNumber)
+    </th>
+    <th>
+    @Html.DisplayNameFor(model => model.Email)
+    </th>
+    <th>
+    @Html.DisplayNameFor(model => model.Status)
+    </th>
+    <th>
+    @Html.DisplayNameFor(model => model.CityId)
+    </th>
+    <th></th>
+    </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Adress)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PhoneNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CityId) 
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-}
+    @foreach (var item in Model) {
+    <tr>
+    <td>
+    @Html.DisplayFor(modelItem => item.Id)
+    </td>
+    <td>
+    @Html.DisplayFor(modelItem => item.Name)
+    </td>
+    <td>
+    @Html.DisplayFor(modelItem => item.Adress)
+    </td>
+    <td>
+    @Html.DisplayFor(modelItem => item.PhoneNumber)
+    </td>
+    <td>
+    @Html.DisplayFor(modelItem => item.Email)
+    </td>
+    <td>
+    @Html.DisplayFor(modelItem => item.Status)
+    </td>
+    <td>
+    @Html.DisplayFor(modelItem => item.CityId)
+    <td>
+    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+    </td>
+    </tr>
+    }
     </tbody>
-</table>
+    </table>
 *@
